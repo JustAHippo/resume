@@ -1,0 +1,57 @@
+'use client'
+import { Link } from "@heroui/link";
+import { Snippet } from "@heroui/snippet";
+import { Code } from "@heroui/code";
+import { button as buttonStyles } from "@heroui/theme";
+
+import { siteConfig } from "@/config/site";
+import { title, subtitle } from "@/components/primitives";
+import { GithubIcon } from "@/components/icons";
+import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@heroui/react";
+export default function Home() {
+  return (
+    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <div className="inline-block max-w-xl text-center justify-center">
+        <Card className="max-w-[500px]">
+          <CardHeader className="justify-start gap-x-5">
+            <Avatar size="lg" isBordered src="/profile.jpg"></Avatar>
+            <div className="flex flex-col gap-1 items-start justify-center">
+              <h4 className="text-large font-bold leading-none text-default-600">Drowzee</h4>
+              <h5 className="text-small tracking-tight text-default-400">Software Developer</h5>
+            </div>
+            
+          </CardHeader>
+          <CardBody>
+            <h5 className="text-small text-default-600 text-wrap" > Hello! I'm a full stack software developer named Drowzee who specializes in backend development and API reverse engineering. I've been programming since I was 13 and have self taught myself many languages over the years. Thanks for stopping by!</h5>
+          </CardBody>
+          <CardFooter className="flex flex-col gap-y-2 items-center justify-center">
+              <h5 className="text-small text-default-400">Proficient in</h5>
+              <div className="flex items-center justify-center gap-x-2">
+                <Avatar size="sm" src="/logos/go.png"></Avatar>
+                <Avatar size="sm" src="/logos/python.png"></Avatar>
+                <Avatar size="sm" src="/logos/node.webp"></Avatar>
+                <Avatar size="sm" src="/logos/csharp.png"></Avatar>
+                <Avatar size="sm" src="/logos/java.webp"></Avatar>
+              </div>
+            
+          </CardFooter>
+        </Card>
+      </div>
+
+      <div className="flex gap-3">
+        <Link
+          className={buttonStyles({
+            color: "primary",
+            radius: "full",
+            variant: "shadow",
+          })}
+          href={"/projects"}
+        >
+          See My Projects
+        </Link>
+      </div>
+
+
+    </section>
+  );
+}
