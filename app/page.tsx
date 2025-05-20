@@ -7,7 +7,7 @@ import { button as buttonStyles } from "@heroui/theme";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
-import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@heroui/react";
+import {Card, CardHeader, CardBody, CardFooter, Avatar, Button, Chip} from "@heroui/react";
 export default function Home() {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -15,9 +15,15 @@ export default function Home() {
         <Card className="max-w-[500px]">
           <CardHeader className="justify-start gap-x-5">
             <Avatar size="lg" isBordered src="/profile.jpg"></Avatar>
-            <div className="flex flex-col gap-1 items-start justify-center">
-              <h4 className="text-large font-bold leading-none text-default-600">Drowzee</h4>
-              <h5 className="text-small tracking-tight text-default-400">Software Developer</h5>
+            <div className="flex flex-col items-start justify-center gap-y-1">
+              <div>
+                <h4 className="text-large font-bold leading-none text-default-600">Drowzee</h4>
+                <h6 className=" text-left text-xs text-default-400">he/they</h6>
+              </div>
+             
+
+              <Chip radius="sm" size="sm" className="text-small" color="primary" variant="shadow"><h5 className="text-small tracking-tight text-default-600">Software Developer</h5></Chip>
+              
             </div>
             
           </CardHeader>

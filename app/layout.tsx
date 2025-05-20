@@ -52,7 +52,7 @@ export default function RootLayout({
                 
                 className="flex items-center gap-1 text-current"
               >
-                <span className="text-default-600">Made by Drowzee</span>
+                <span className="text-default-600">Made by <Link href="/about">Drowzee</Link></span>
               </div>
             </footer>
           </div>
