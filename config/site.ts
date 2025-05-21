@@ -21,7 +21,7 @@ export const siteConfig = {
       href: "/about",
     },
   ],
-  
+
   links: {
     github: "https://github.com/JustAHippo",
     twitter: "https://twitter.com/drowzeedev",

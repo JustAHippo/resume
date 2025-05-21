@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -10,7 +10,7 @@ import {
 } from "@heroui/navbar";
 import { Button } from "@heroui/button";
 import React from "react";
-import {Avatar} from "@heroui/react";
+import { Avatar } from "@heroui/react";
 import { Kbd } from "@heroui/kbd";
 import { Link } from "@heroui/link";
 import { Input } from "@heroui/input";
@@ -24,9 +24,7 @@ import {
   TwitterIcon,
   GithubIcon,
   DiscordIcon,
-  HeartFilledIcon,
   SearchIcon,
-  Logo,
 } from "@/components/icons";
 
 export const Navbar = () => {
@@ -52,11 +50,11 @@ export const Navbar = () => {
   );
 
   return (
-    <HeroUINavbar maxWidth="xl" position="sticky" shouldHideOnScroll>
+    <HeroUINavbar shouldHideOnScroll maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-4" href="/">
-            <Avatar size="sm" isBordered src="/profile.jpg"></Avatar>
+            <Avatar isBordered size="sm" src="/profile.jpg" />
             <p className="font-bold text-inherit">Drowzee</p>
           </NextLink>
         </NavbarBrand>
@@ -94,10 +92,9 @@ export const Navbar = () => {
           </Link>
           <ThemeSwitch />
         </NavbarItem>
-        
+
         <NavbarItem className="hidden md:flex">
           <Button
-            
             as={Link}
             className="text-sm font-normal text-default-600 bg-default-100"
             href={"/contact"}
@@ -118,22 +115,15 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarMenu>
-       
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={ "foreground"}
-                href={item.href}
-                size="lg"
-              >
+              <Link color={"foreground"} href={item.href} size="lg">
                 {item.label}
-                
               </Link>
             </NavbarMenuItem>
           ))}
           <Button
-            
             as={Link}
             className="text-sm font-normal text-default-600 bg-default-100"
             href={"/contact"}

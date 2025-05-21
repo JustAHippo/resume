@@ -48,11 +48,10 @@ export default function RootLayout({
               {children}
             </main>
             <footer className="w-full flex items-center justify-center py-3">
-              <div
-                
-                className="flex items-center gap-1 text-current"
-              >
-                <span className="text-default-600">Made by <Link href="/about">Drowzee</Link></span>
+              <div className="flex items-center gap-1 text-current">
+                <span className="text-default-600">
+                  Made by <Link href="/about">Drowzee</Link>
+                </span>
               </div>
             </footer>
           </div>
