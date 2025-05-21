@@ -6,7 +6,7 @@ import { button as buttonStyles } from "@heroui/theme";
 
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+import { GithubIcon, HeartFilledIcon, SearchIcon } from "@/components/icons";
 import {Card, CardHeader, CardBody, CardFooter, Avatar, Button, Chip} from "@heroui/react";
 export default function Home() {
   return (
@@ -53,7 +53,19 @@ export default function Home() {
           })}
           href={"/projects"}
         >
+          <SearchIcon/>
           See My Projects
+        </Link>
+                <Link
+          className={buttonStyles({
+            color: "secondary",
+            radius: "full",
+            variant: "shadow",
+          })}
+          href={"/about"}
+        >
+          <HeartFilledIcon/>
+          Read About Me
         </Link>
       </div>
 

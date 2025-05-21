@@ -161,9 +161,8 @@ export default function AboutPage() {
         <CardFooter className="text-center flex flex-col">
           <h1 className="text-center">You can download:</h1>
           <div className="flex flex-row m-2 gap-2 justify-center">
-            <Button variant="shadow">SSH Public Key</Button>
-            <Button variant="shadow">This Message</Button>
-            <Button variant="shadow">Message Signature</Button>
+            <a href="/resume.pdf" download><Button variant="shadow">My Résumé</Button></a>
+            
             
           </div>
           

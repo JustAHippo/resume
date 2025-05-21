@@ -1,3 +1,4 @@
+'use client'
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -9,6 +10,7 @@ import {
 } from "@heroui/navbar";
 import { Button } from "@heroui/button";
 import React from "react";
+import {Avatar} from "@heroui/react";
 import { Kbd } from "@heroui/kbd";
 import { Link } from "@heroui/link";
 import { Input } from "@heroui/input";
@@ -53,9 +55,9 @@ export const Navbar = () => {
     <HeroUINavbar maxWidth="xl" position="sticky" shouldHideOnScroll>
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">DROWZEE</p>
+          <NextLink className="flex justify-start items-center gap-4" href="/">
+            <Avatar size="sm" isBordered src="/profile.jpg"></Avatar>
+            <p className="font-bold text-inherit">Drowzee</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">

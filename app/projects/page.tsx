@@ -4,7 +4,7 @@ import { title } from "@/components/primitives";
 import {Card, CardHeader, CardBody, CardFooter, Avatar, Link} from "@heroui/react"
 import { button as buttonStyles } from "@heroui/theme";
 import {GithubIcon} from "@/components/icons";
-import { Button, Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import { Button, Dialog, DialogPanel, DialogTitle, Transition } from '@headlessui/react'
 import { useState } from 'react'
 import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
 export default function ProjectsPage() {
@@ -19,6 +19,14 @@ export default function ProjectsPage() {
     setServiceInfo(messages[index].text)
     setCarouselItems(messages[index].images)
     
+  }
+
+  function renderImage(link: string, idx : number){
+    if (link.includes("mp4")) {
+      return <CCarouselItem key={idx}><video controls> <source src={link} type="video/mp4"/> Your browser does not support the video tag.</video></CCarouselItem>
+    } else {
+      return <CCarouselItem key={idx}><CImage className="d-block w-100" src={link} alt={`slide ${idx}`} /> </CCarouselItem>
+    }
   }
 
   function close() {
@@ -41,44 +49,71 @@ export default function ProjectsPage() {
               href="https://www.nintendo.com/en-gb/Hardware/Nintendo-3DS-Family/Download-Content/Nintendo-eShop/Nintendo-eShop-904671.html" className="text-small" isExternal>
                 Nintendo 3DS eShop</Link> API. Currently, both downloading and browsing applications has been fully implemented, however some functionality remains undocumented.</p><br/><p>Unforunately, I am not able to provide a public release, service, or codebase of this project. However, source code and documentation can be made accessible privately <Link href="/contact" className="text-small">upon request</Link>. </p></div>,
       images: ["/carousel/theshop/1.png", "/carousel/theshop/2.jpg"]
+    },
+        {
+      name:"Fox Frenzy",
+      text:<div><p>Fox Frenzy is a 2-4 player online party game in which players take control of foxes who try to hold onto a chicken until their time runs out. It is a competitive game with a king-of-the-hill style of gameplay. Made in 1 and 1/2 weeks, Fox Frenzy was a collaborative effort between 5 team members for CMU's NHSGA program.</p>
+      <br/>
+      <p>Specifically, my responsibilities covered client-server interactions, along with all of the networking code present in the game. Learning Unity and networking with <Link isExternal href="https://mirror-networking.com/" className="text-sm">Mirror</Link> was a fun challenge and taught me the intricacies of game development and OOP with C#.</p>
+      <br/>
+      <p>Fox Frenzy is available for download <Link isExternal className="text-sm" href="https://qbish.itch.io/fox-frenzy">here</Link> and is fully operable. Because the game was a group effort between multiple parties, <b>no source code or documentation is available by request.</b></p>
+      </div>,
+      images: ["/carousel/foxfrenzy/Trailer.mp4", "/carousel/foxfrenzy/Gameplay.mp4"]
     }
   ]
   return (
     
     <div className="">
-        <Dialog open={isOpen} as="div" className="relative z-10 focus:outline-none" onClose={close}>
-        <div className="fixed inset-0 z-10 w-screen overflow-y-scroll">
-          <div className="flex min-h-full items-center justify-center p-4">
-            <DialogPanel
-              transition
-              className="w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
-            >
-              <DialogTitle as="h3" className="text-lg font-medium text-white">
-                {serviceTitle}
-              </DialogTitle>
-              <div className="mt-2 text-sm/6 text-white/50">
-                {serviceInfo}
+      <Transition show={isOpen} as={React.Fragment}>
+        <Dialog as="div" className="relative z-10 focus:outline-none" onClose={close}>
+          <Transition.Child
+            as={React.Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
+          </Transition.Child>
 
-                <CCarousel className="m-6" controls indicators interval={5000}>
-  {carouselItems.filter(Boolean).map((image, idx) => (
-    <CCarouselItem key={idx}>
-      <CImage className="d-block w-100" src={image} alt={`slide ${idx}`} />
-    </CCarouselItem>
-  ))}
-</CCarousel>
-              </div>
-              <div className="mt-4">
-                <Button
-                  className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
-                  onClick={close}
-                >
-                  Got it, thanks!
-                </Button>
-              </div>
-            </DialogPanel>
+          <div className="fixed inset-0 z-10 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4">
+              <Transition.Child
+                as={React.Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-xl bg-white/5 p-6 backdrop-blur-2xl transition-all">
+                  <DialogTitle as="h3" className="text-lg font-medium text-white">
+                    {serviceTitle}
+                  </DialogTitle>
+                  <div className="mt-2 text-sm/6 text-white/50">
+                    {serviceInfo}
+
+                    <CCarousel className="m-6" controls indicators interval={false}>
+                      {carouselItems.filter(Boolean).map((image, idx) => renderImage(image, idx))}
+                    </CCarousel>
+                  </div>
+                  <div className="mt-4">
+                    <Button
+                      className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 hover:bg-gray-600"
+                      onClick={close}
+                    >
+                      Got it, thanks!
+                    </Button>
+                  </div>
+                </DialogPanel>
+              </Transition.Child>
+            </div>
           </div>
-        </div>
-      </Dialog>
+        </Dialog>
+      </Transition>
     
       <div className={`${isOpen ? 'blur-sm' : ''} p-4 rounded`}>
         <h1 className={title()}>Projects</h1>
@@ -104,6 +139,31 @@ export default function ProjectsPage() {
                 variant: "shadow",
               })}
               onClick={() => open(0)}
+            >
+              Learn More!
+            </Link>
+        </CardFooter>
+        </Card>
+        <Card className="max-w-[300px]">
+          <CardHeader className="justify-center gap-x-3">
+              <Avatar isBordered size="md" src="/logos/foxfrenzy.png"></Avatar>
+              <h1 className="font-bold">Fox Frenzy</h1>
+          </CardHeader>
+          <CardBody className="">
+            <h6 className="text-small text-default-600 text-wrap text-center">
+              Fox Frenzy is a 2-4 player online party game in which players take control of foxes who try to hold onto a chicken until their time runs out. It is a competitive game with a king-of-the-hill style of gameplay. Made in 1 and 1/2 weeks, Fox Frenzy was a collaborative effort between 5 team members for CMU's NHSGA program.
+            </h6>
+
+            
+          </CardBody>
+          <CardFooter className="flex flex-col gap-y-2 items-center justify-center">
+            <Link
+              className={buttonStyles({
+                color: "primary",
+                radius: "full",
+                variant: "shadow",
+              })}
+              onClick={() => open(3)}
             >
               Learn More!
             </Link>
