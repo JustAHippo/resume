@@ -9,7 +9,7 @@ export default function AboutPage() {
     <div>
       <h1 className={title()}>About</h1>
       <h2 className="text-default-400 m-4">A little bit about... me!</h2>
-      <Card>
+      <Card className="max-w-[500px]">
         <CardHeader className="justify-start gap-x-5">
           <Avatar size="lg" isBordered src="/profile.jpg"></Avatar>
             <div className="flex flex-col items-start justify-center gap-y-1">
