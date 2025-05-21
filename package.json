@@ -2,9 +2,12 @@
   "name": "next-app-template",
   "version": "0.0.1",
   "private": true,
+  "homepage": "http://justahippo.github.io/resume",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
     "start": "next start",
     "lint": "eslint --fix"
   },
@@ -55,6 +58,7 @@
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-unused-imports": "4.1.4",
+    "gh-pages": "^6.3.0",
     "globals": "16.0.0",
     "postcss": "8.5.3",
     "prettier": "3.5.3",
