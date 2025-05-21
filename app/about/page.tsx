@@ -26,26 +26,29 @@ export default function AboutPage() {
             <Code size="md" color="default"><b>Hello, I'm Drowzee! 👋 </b></Code>
           </div>
           <div>
-          <Code size="sm" color="default" className="text-wrap">
+          <Code  size="sm" color="default" className="whitespace-pre-wrap text-wrap break-words text-sm ">
             <p>I'm a 17 year-old programmer and Computer Science major at the University of Maryland! Some of my favorite activities are fencing, hanging out with my friends, <Link href="/projects" className="text-sm">coding</Link>, reading, and most importantly, playing with my guinea pigs.</p>
             <br/>
-            <CCarousel controls indicators interval={false}>
+            <div className="w-full max-w-md mx-auto">
+              <CCarousel controls indicators interval={false}>
               <CCarouselItem>
-                <CImage className="d-block w-100" src={'/carousel/piggy/1.png'} alt="slide 1" />
+                <CImage className="d-block w-full object-cover rounded" src={'/carousel/piggy/1.png'} alt="slide 1" />
               </CCarouselItem>
               <CCarouselItem>
-                <CImage className="d-block w-100" src={'/carousel/piggy/2.png'} alt="slide 2" />
+                <CImage className="d-block w-full object-cover rounded" src={'/carousel/piggy/2.png'} alt="slide 2" />
               </CCarouselItem>
               <CCarouselItem>
-                <CImage className="d-block w-100" src={'/carousel/piggy/3.png'} alt="slide 3" />
+                <CImage className="d-block w-full object-cover rounded" src={'/carousel/piggy/3.png'} alt="slide 3" />
               </CCarouselItem>
               <CCarouselItem>
-                <CImage className="d-block w-100" src={'/carousel/piggy/4.png'} alt="slide 4" />
+                <CImage className="d-block w-full object-cover rounded" src={'/carousel/piggy/4.png'} alt="slide 4" />
               </CCarouselItem>
               <CCarouselItem>
-                <CImage className="d-block w-100" src={'/carousel/piggy/5.png'} alt="slide 5" />
+                <CImage className="d-block w-full object-cover rounded" src={'/carousel/piggy/5.png'} alt="slide 5" />
               </CCarouselItem>
             </CCarousel>
+            </div>
+
             
             <p className="text-default-400 text-xs text-center m-2">Oh they're so adorable :)</p>
             
@@ -55,7 +58,7 @@ export default function AboutPage() {
             <Accordion>
               <AccordionItem key="1" aria-label="Here's some people that inspire me" title="Here's some people that inspire me">
               
-                <div>
+                <div className="">
                   <Table aria-label="Favorite People Table">
                     <TableHeader>
                       <TableColumn>NAME</TableColumn>
