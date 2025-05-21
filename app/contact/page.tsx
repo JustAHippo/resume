@@ -3,7 +3,7 @@ import { title } from "@/components/primitives";
 import React from "react";
 import {Form, Button, Card, Input, CardBody, Select, SelectItem, Textarea} from '@heroui/react';
 
-export const reasons = [
+const reasons = [
   {key: "source-docs", label: "Source or Documentation"},
   {key: "well-wishes", label: "Well Wishes"},
   {key: "unwell-wishes", label: "Unwell Wishes"},
@@ -14,10 +14,10 @@ export const reasons = [
 export default function ContactPage() {
   const [submitted, setSubmitted] = React.useState(null);
 
-  const onSubmit = (e) => {
+  const onSubmit = (e : any) => {
     e.preventDefault();
 
-    const data = Object.fromEntries(new FormData(e.currentTarget));
+    const data : any= Object.fromEntries(new FormData(e.currentTarget));
 
     setSubmitted(data);
   };

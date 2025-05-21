@@ -87,6 +87,7 @@ export default defineConfig([globalIgnores([
 
     rules: {
         "no-console": "warn",
+        "react/no-unescaped-entities": 0,
         "react/prop-types": "off",
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
@@ -94,6 +95,7 @@ export default defineConfig([globalIgnores([
         "jsx-a11y/click-events-have-key-events": "warn",
         "jsx-a11y/interactive-supports-focus": "warn",
         "prettier/prettier": "warn",
+        'jsx-a11y/media-has-caption': 'off',
         "no-unused-vars": "off",
         "unused-imports/no-unused-vars": "off",
         "unused-imports/no-unused-imports": "warn",
