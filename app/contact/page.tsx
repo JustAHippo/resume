@@ -1,5 +1,7 @@
 "use client";
+import { useEffect } from "react";
 import React from "react";
+import { useSearchParams } from "next/navigation";
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import {
   Form,
@@ -37,10 +39,21 @@ export default function ContactPage() {
 }
 
 function ContactForm() {
+  const searchParams = useSearchParams();
   const [submitted, setSubmitted] = React.useState(null);
   const [topAlert, setTopAlert] = React.useState(<div></div>);
   const { executeRecaptcha } = useGoogleReCaptcha();
-
+   useEffect(() => {
+    if (searchParams.get("verified")) {
+      setTopAlert(
+        <div>
+          <Alert className="text-wrap" color="success">
+            Your message has been sent successfully! Check your email for more information.
+          </Alert>
+        </div>
+      );
+    }
+  }, [searchParams]);
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -78,8 +91,8 @@ function ContactForm() {
       console.log("Success:", data);
       setTopAlert(
         <div>
-          <Alert className="text-wrap" color="success">
-            Received! Check your email to verify. Your ticket will expire in 1 hour.
+          <Alert className="text-wrap" color="primary">
+            Received request! Check your email to verify. Your ticket will expire in 1 hour.
           </Alert>
         </div>
       );
@@ -101,9 +114,13 @@ function ContactForm() {
       <h2 className="text-default-400 m-4">
         Here's where you can get in contact!
       </h2>
-
-      <Card>
-        <CardHeader className="w-full max-w-xs">{topAlert}</CardHeader>
+      <div className="max-w-md justify-center m-2">
+        {topAlert}
+      </div>
+      
+      <div className="w-full max-w-xs mx-auto">
+        <Card>
+        <CardHeader className="w-full max-w-xs"></CardHeader>
         <CardBody>
           <Form className="w-full max-w-xs" onSubmit={onSubmit}>
             <Input
@@ -134,7 +151,8 @@ function ContactForm() {
             <Button type="submit">Send</Button>
           </Form>
         </CardBody>
-      </Card>
+      </Card></div>
+      
     </div>
   );
 }
