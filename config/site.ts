@@ -27,4 +27,6 @@ export const siteConfig = {
     twitter: "https://twitter.com/drowzeedev",
     discord: "https://discordapp.com/users/797192288174342155",
   },
+  api: "https://api.drowzee.me",
+  captcha_key: "6Ldi6UMrAAAAADbM8i4Ie9IXJYWeIFLrnYotci3D"
 };

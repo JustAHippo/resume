@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { Suspense } from "react";
 import React from "react";
+import { siteConfig } from "@/config/site";
 import { useSearchParams } from "next/navigation";
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import {
@@ -19,7 +20,7 @@ import {
 
 import { title } from "@/components/primitives";
 
-const SITE_KEY = "6Ldi6UMrAAAAADbM8i4Ie9IXJYWeIFLrnYotci3D";
+const SITE_KEY = siteConfig.captcha_key;
 
 const reasons = [
   { key: "source-docs", label: "Source or Documentation" },
@@ -78,7 +79,7 @@ function ContactForm() {
     formData.recaptchaToken = token;
 
     try {
-      const response = await fetch("/api/v1/contact/send", {
+      const response = await fetch( siteConfig.api+ "/api/v1/contact/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
