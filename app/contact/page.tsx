@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { Suspense } from "react";
 import React from "react";
 import { useSearchParams } from "next/navigation";
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3";
@@ -33,7 +34,9 @@ const reasons = [
 export default function ContactPage() {
   return (
     <GoogleReCaptchaProvider reCaptchaKey={SITE_KEY}>
-      <ContactForm />
+      <Suspense fallback={<div>Loading contact form...</div>}>
+        <ContactForm />
+      </Suspense>
     </GoogleReCaptchaProvider>
   );
 }
